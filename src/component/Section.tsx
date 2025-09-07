@@ -10,7 +10,7 @@ import { Object3D } from "three";
 
 import { SiNike } from 'react-icons/si';
 
-// import { ModelCanvas } from "../components/3d/Model2";
+import { ModelCanvas } from "../components/3d/Model2";
 
 
 import { useRef } from "react";
@@ -214,9 +214,9 @@ const Section = () => {
 
         </div> */}
         <div className="circular-mask">
-          {/* <div className="  max-lg:pointer-events-none z-99 w-full h-full">
+        <div className="  max-lg:pointer-events-none z-99 w-full h-full">
             <ModelCanvas ref={modelRef} />
-          </div> */}
+          </div>
         </div>
         <div className="tooltips">
           <div className="tooltip">

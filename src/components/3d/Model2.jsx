@@ -6,7 +6,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import {  useAnimations,  } from "@react-three/drei";
 
 const Model2 = React.forwardRef((props,ref) => {
-  const { scene, animations } = useGLTF("");
+  const { scene, animations } = useGLTF("/scifi.glb");
   // ✅ React Three Fiber-managed animation controller
   const { actions } = useAnimations(animations, scene);
 
