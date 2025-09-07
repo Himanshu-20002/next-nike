@@ -198,7 +198,7 @@ const Section = () => {
             To <span className=" bg-clip-text text-red-400 text-[10vw]">Find Out</span>
           </h1>
           <h1 className="text-10xl">
-            <span className="  bg-clip-text text-[5vw]">
+            <span className="  bg-clip-text text-[7vw]">
               just
             </span>
             <span className="bg-clip-text text-[7vw]">

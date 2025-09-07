@@ -1,11 +1,16 @@
-
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Heropage() {
   const [scrollY, setScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const aboutTextRef = useRef(null);
+  const aboutImgRef = useRef(null);
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -17,6 +22,41 @@ export default function Heropage() {
       window.removeEventListener("resize", handleResize);
     }
 
+  }, []);
+
+  useEffect(() => {
+    gsap.fromTo(
+      aboutTextRef.current,
+      { x: 80, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: aboutTextRef.current,
+          start: "top 80%",
+          end: "top 40%",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      aboutImgRef.current,
+      { x: -80, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: aboutImgRef.current,
+          start: "top 80%",
+          end: "top 40%",
+          scrub: true,
+        },
+      }
+    );
   }, []);
 
   const shoes = [
@@ -104,15 +144,16 @@ export default function Heropage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center justify-center w-full">
             <div
+              ref={aboutTextRef}
               className="space-y-6 mx-auto w-full"
-              style={{
-                // Mobile: subtle slide in, Desktop: subtle slide in
-                transform: isMobile
-                  ? `translateX(${Math.max(0, 50 - (scrollY - 400) * 0.2)}px)`
-                  : `translateX(${Math.max(0, 20 - (scrollY - 500) * 0.1)}px)`,
-                opacity: Math.min(1, Math.max(0, (scrollY - 400) / 200)),
-                
-              }}
+              // style={{
+              //   // Mobile: subtle slide in, Desktop: subtle slide in
+              //   transform: isMobile
+              //     ? `translateX(${Math.max(0, 50 - (scrollY - 400) * 0.2)}px)`
+              //     : `translateX(${Math.max(0, 20 - (scrollY - 500) * 0.1)}px)`,
+              //   opacity: Math.min(1, Math.max(0, (scrollY - 400) / 200)),
+              //   transition: "transform 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s cubic-bezier(.4,0,.2,1)",
+              // }}
             >
               <h2 className="text-5xl md:text-6xl font-black">
                 Innovation
@@ -132,11 +173,13 @@ export default function Heropage() {
               </p>
             </div>
             <div
+              ref={aboutImgRef}
               className="relative"
-              style={{
-                transform: `translateX(${Math.min(100, scrollY * 0.1 - 100)}px)`,
-                opacity: Math.min(1, Math.max(0, (scrollY - 400) / 300)),
-              }}
+              // style={{
+              //   transform: `translateX(${Math.min(100, scrollY * 0.1 - 100)}px)`,
+              //   opacity: Math.min(1, Math.max(0, (scrollY - 400) / 300)),
+              //   transition: "transform 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s cubic-bezier(.4,0,.2,1)",
+              // }}
             >
               <div className="w-full h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center">
                 <div className="text-6xl font-black text-gray-600">

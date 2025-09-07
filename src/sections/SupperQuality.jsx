@@ -34,12 +34,12 @@ const SupperQuality = () => {
 
       {/* Image Content */}
       <div className="flex-1 flex justify-center items-center">
-        <div className="relative w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[570px] rounded-2xl">
+        <div className="relative w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[570px] rounded-2xl h-auto p-5">
           <Image
             src={"/img/super.avif"}
             alt="Shoe"
             width={570}
-            height={422}
+            height={222}
             className="object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
           />
         </div>
