@@ -3,22 +3,21 @@ import { Footer,SupperQuality,Subscribe,PopularProduct} from '../sections'
 import HeroPage from "../component/Heropage"
 import Section from "@/component/Section";
 
+
 export default function Home() {
+  
+
+
   return (
- <ReactLenis root className="  w-screen overflow-x-hidden bg-black ">
-<HeroPage/>
-
-<PopularProduct/>
-<SupperQuality/> 
-
-<Section/>
-
-<Subscribe/>
-<Footer/>
-
-
-
-
-</ReactLenis>
+ <ReactLenis root  direction="vertical" gestureDirection="vertical" smooth={true} smoothTouch={true} infinite={false}>
+      <div className="w-screen overflow-x-hidden bg-black">
+        <HeroPage />
+        <PopularProduct />
+        <SupperQuality />
+        <Section />
+        <Subscribe />
+        <Footer />
+      </div>
+    </ReactLenis>
   );
 }

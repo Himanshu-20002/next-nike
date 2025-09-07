@@ -2,16 +2,27 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { ReactLenis } from 'lenis/react'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Heropage() {
+  const lenisRef = useRef()
   const [scrollY, setScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const aboutTextRef = useRef(null);
   const aboutImgRef = useRef(null);
+  const heroRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const buttonRef = useRef(null);
 
   useEffect(() => {
+     function update(time) {
+      lenisRef.current?.lenis?.raf(time * 1000)
+    }
+  
+    gsap.ticker.add(update)
     const handleScroll = () => setScrollY(window.scrollY);
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("scroll", handleScroll);
@@ -20,6 +31,7 @@ export default function Heropage() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      gsap.ticker.remove(update)
     }
 
   }, []);
@@ -57,6 +69,39 @@ export default function Heropage() {
         },
       }
     );
+  }, []);
+
+  useEffect(() => {
+    const heroSection = heroRef.current;
+    const title = titleRef.current;
+    const subtitle = subtitleRef.current;
+    const button = buttonRef.current;
+
+    // Create smooth parallax effect
+    gsap.to(heroSection, {
+      yPercent: 50,
+      ease: "none",
+      scrollTrigger: {
+        trigger: heroSection,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.5
+      }
+    });
+
+    // Animate hero content
+    gsap.to([title, subtitle, button], {
+      yPercent: 100,
+      opacity: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: heroSection,
+        start: "25% top",
+        end: "75% top",
+        scrub: 1.5,
+      }
+    });
+
   }, []);
 
   const shoes = [
@@ -99,40 +144,28 @@ export default function Heropage() {
   ];
 
   return (
+    <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} >
     <main className="bg-black text-white overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center">
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black"
-          style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
-          }}
-        />
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black" />
         <div className="relative z-10 text-center">
           <h1
+            ref={titleRef}
             className="text-8xl md:text-9xl font-black mb-6 tracking-tighter"
-            style={{
-              transform: `translateY(${scrollY * 0.3}px)`,
-              opacity: 1 - scrollY / 800,
-            }}
           >
             NIKE
           </h1>
           <p
+            ref={subtitleRef}
             className="text-xl md:text-2xl font-light mb-8"
-            style={{
-              transform: `translateY(${scrollY * 0.4}px)`,
-              opacity: 1 - scrollY / 600,
-            }}
           >
             Just Do It
           </p>
           <button
-            className="bg-white text-black px-8 py-4 text-lg font-bold rounded-full hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
-            style={{
-              transform: `translateY(${scrollY * 0.2}px)`,
-              opacity: 1 - scrollY / 700,
-            }}
+            ref={buttonRef}
+            className="bg-white text-black px-8 py-4 text-lg font-bold rounded-full 
+                     hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
           >
             Shop Now
           </button>
@@ -140,7 +173,7 @@ export default function Heropage() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 px-6 md:px-12 lg:px-24">
+      <section className="h-[80dvh] py-20 px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center justify-center w-full">
             <div
@@ -198,8 +231,8 @@ export default function Heropage() {
       </section>
 
       {/* Shoes Showcase */}
-      <section className="py-20 px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto">
+      <section className="w-screen h-[190dvh] py-20 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto p-5">
           <h2
             className="text-5xl md:text-6xl font-black text-center mb-16"
             style={{
@@ -213,7 +246,7 @@ export default function Heropage() {
             {shoes.map((shoe, index) => (
               <div
                 key={shoe.id}
-                className="group relative bg-gray-900 rounded-2xl p-8 hover:bg-gray-800 transition-all duration-500 transform hover:scale-105"
+                className="group relative bg-gray-900 rounded-2xl p-8 hover:bg-gray-800 transition-all duration-500 transform hover:scale-105 "
                 style={{
                   transform: `translateY(${Math.max(-30, -scrollY * 0.02 + 50 + index * 10)}px)`,
                   opacity: Math.min(1, Math.max(0, (scrollY - 1000 - index * 100) / 300)),
@@ -242,7 +275,7 @@ export default function Heropage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 text-center">
+      <section className=" w-screen h-[60dvh] py-20 px-6 md:px-12 lg:px-24 text-center">
         <div
           className="max-w-4xl mx-auto"
           style={{
@@ -270,7 +303,7 @@ export default function Heropage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 py-12 px-6 md:px-12 lg:px-24">
+      <footer className="w-screen h-[25dvh] bg-gray-900 py-12 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto text-center">
           <div className="text-4xl font-black mb-6">NIKE</div>
           <p className="text-gray-400 mb-8">Just Do It</p>
@@ -278,5 +311,6 @@ export default function Heropage() {
         </div>
       </footer>
     </main>
+    </ReactLenis>
   );
 }

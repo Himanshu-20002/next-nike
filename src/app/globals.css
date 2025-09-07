@@ -190,3 +190,48 @@ section:not(#services) {
   transform: translateY(100%);
   will-change: transform;
  }
+/* 
+@media (max-width: 768px) {
+  .tooltips {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 0;
+    padding: 1rem 0.5rem;
+    box-sizing: border-box;
+  }
+  .tooltip {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100vw;
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+    align-items: flex-start;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    background: rgba(20,20,20,0.7);
+    margin: 0;
+  }
+  .tooltip .icon {
+    font-size: 2rem;
+    gap: 0.5rem;
+  }
+  .tooltip .title h2 {
+    font-size: 1.1rem;
+  }
+  .tooltip .description p {
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
+  .tooltip .divider {
+    margin: 0.5rem 0;
+  }
+} */

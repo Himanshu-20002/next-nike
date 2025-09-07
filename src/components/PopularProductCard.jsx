@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const PopularProductCard = ({ imgURL, name, price }) => {
   return (
-    <div className="flex flex-col w-full max-w-[320px] p-4 sm:p-6 md:p-8 bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className=" flex flex-col w-full max-w-[320px] p-4 sm:p-6 md:p-8 bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
       {/* Image Container */}
       <div className="relative w-full aspect-square overflow-hidden rounded-xl bg-white">
         <Image

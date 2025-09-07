@@ -6,7 +6,7 @@ const PopularProduct = () => {
   return (
     <section
       id="products"
-      className="max-container px-4 sm:px-6 md:px-8 lg:px-4 xl:px-0 py-10 md:py-16 lg:py-20 "
+      className="h-[150dvh] max-container px-4 sm:px-6 md:px-8 lg:px-4 xl:px-0 py-10 md:py-16 lg:py-20 "
     >
       <div className="flex flex-col justify-start gap-5 mt-20 md:mt-32 lg:mt-40 ">
         <h2 className="text-3xl sm:text-4xl font-palanquin font-bold text-center lg:text-left lg:ml-14">
