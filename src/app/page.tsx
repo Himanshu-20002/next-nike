@@ -9,7 +9,7 @@ export default function Home() {
 
 
   return (
- <ReactLenis root  direction="vertical" gestureDirection="vertical" smooth={true} smoothTouch={true} infinite={false}>
+ <ReactLenis root options={{ autoRaf: false }} >
       <div className="w-screen overflow-x-hidden bg-black">
         <HeroPage />
         <PopularProduct />
