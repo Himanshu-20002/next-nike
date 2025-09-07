@@ -173,7 +173,7 @@ export default function Heropage() {
       </section>
 
       {/* About Section */}
-      <section className="h-[80dvh] py-20 px-6 md:px-12 lg:px-24">
+      <section className="h-[80dvh] max-lg:h-[120dvh] py-20 px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center justify-center w-full">
             <div
@@ -231,7 +231,7 @@ export default function Heropage() {
       </section>
 
       {/* Shoes Showcase */}
-      <section className="w-screen h-[190dvh] py-20 px-6 md:px-12 lg:px-24">
+      <section className="w-screen h-[200dvh] max-lg:h-[600dvh] py-20 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto p-5">
           <h2
             className="text-5xl md:text-6xl font-black text-center mb-16"
