@@ -7,7 +7,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <footer className="max-container ">
-      <div className="flex justify-between items-start  gap-20 flex-wrap max-lg:flex flex-col max-sm:p-5">
+      <div className="flex justify-between items-start p-10 gap-20 flex-wrap max-lg:flex flex-col max-sm:p-5">
         <a href="/">
           <Image alt={"img"} src={footerLogo} width={150} height={46} />
         </a>

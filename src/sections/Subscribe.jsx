@@ -4,7 +4,7 @@ import Button from "../components/Button";
 const Subscribe = () => {
   return (
     <section
-      className="max-container py-12  max-sm:px-5 "
+      className="max-container py-12 p-10 max-sm:px-5 "
       id="contact-us"
     >
       <div className="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-12">

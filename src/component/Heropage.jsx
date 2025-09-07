@@ -5,11 +5,18 @@ import { useEffect, useState } from "react";
 
 export default function Heropage() {
   const [scrollY, setScrollY] = useState(0);
-
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initial check
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    }
+
   }, []);
 
   const shoes = [
@@ -95,12 +102,16 @@ export default function Heropage() {
       {/* About Section */}
       <section className="py-20 px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center justify-center w-full">
             <div
-              className="space-y-6"
+              className="space-y-6 mx-auto w-full"
               style={{
-                transform: `translateX(${Math.max(-100, -scrollY * 0.1 + 100)}px)`,
-                opacity: Math.min(1, Math.max(0, (scrollY - 400) / 300)),
+                // Mobile: subtle slide in, Desktop: subtle slide in
+                transform: isMobile
+                  ? `translateX(${Math.max(0, 50 - (scrollY - 400) * 0.2)}px)`
+                  : `translateX(${Math.max(0, 20 - (scrollY - 500) * 0.1)}px)`,
+                opacity: Math.min(1, Math.max(0, (scrollY - 400) / 200)),
+                
               }}
             >
               <h2 className="text-5xl md:text-6xl font-black">
@@ -110,12 +121,12 @@ export default function Heropage() {
                 <br />
                 Performance
               </h2>
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-sm text-gray-300 leading-relaxed w-70 ">
                 For over 50 years, Nike has pushed the boundaries of athletic innovation.
                 From the waffle sole to Air cushioning to Flyknit technology, we've never
                 stopped reimagining what's possible.
               </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-sm text-gray-300 leading-relaxed w-100">
                 Every shoe tells a story of dedication, craftsmanship, and the relentless
                 pursuit of helping athletes achieve their best.
               </p>
@@ -123,7 +134,7 @@ export default function Heropage() {
             <div
               className="relative"
               style={{
-                transform: `translateX(${Math.min(100, scrollY * 0.1 - 200)}px)`,
+                transform: `translateX(${Math.min(100, scrollY * 0.1 - 100)}px)`,
                 opacity: Math.min(1, Math.max(0, (scrollY - 400) / 300)),
               }}
             >

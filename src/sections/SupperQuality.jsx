@@ -7,7 +7,7 @@ const SupperQuality = () => {
   return (
     <section
       id="about-us"
-      className="flex flex-col lg:flex-row justify-center items-center gap-10 w-full h-auto lg:h-[70vh] max-container px-6 py-12 md:px-10 lg:px-16"
+      className="flex flex-col lg:flex-row justify-center items-center gap-10 w-full h-auto lg:h-[100dvh] max-container px-6 py-12 md:px-10 lg:px-16"
     >
       {/* Text Content */}
       <div className="flex flex-1 flex-col text-center lg:text-left">
@@ -34,12 +34,12 @@ const SupperQuality = () => {
 
       {/* Image Content */}
       <div className="flex-1 flex justify-center items-center">
-        <div className="relative w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[570px]">
+        <div className="relative w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[570px] rounded-2xl">
           <Image
             src={"/img/super.avif"}
             alt="Shoe"
             width={570}
-            height={522}
+            height={422}
             className="object-contain rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
           />
         </div>
