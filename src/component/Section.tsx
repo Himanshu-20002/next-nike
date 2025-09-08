@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { Object3D } from "three"; 
+import { Object3D } from "three";
 
 
 
@@ -103,6 +103,9 @@ const Section = () => {
       end: `+=${window.innerHeight * 5}px`,
       pin: true,
       pinSpacing: true,
+
+      anticipatePin: 1,      // <-- reduces initial pin jump on mobile
+      fastScrollEnd: true,   // <-- prevents snap at end
       scrub: 1,
       onUpdate: ({ progress }) => {
         const headerProgress = Math.max(
@@ -190,7 +193,7 @@ const Section = () => {
   //   "text-black absolute top-50% left-50% text-[9vw] italic will-change-transform   translate(-50%, -50%)";
   return (
     <div>
-      <section className="product-overview  min-h-[100dvh] w-screen bg-white">
+      <section className="product-overview  max-lg:hidden block min-h-[100dvh] w-screen bg-white">
 
         <div className="header-1">
           <h1 ref={header1Ref}>Only one Way</h1>
@@ -214,7 +217,7 @@ const Section = () => {
 
         </div> */}
         <div className="circular-mask">
-        <div className="  max-lg:pointer-events-none z-99 w-full h-full">
+          <div className="  max-lg:pointer-events-none z-99 w-full h-full">
             <ModelCanvas ref={modelRef} />
           </div>
         </div>
