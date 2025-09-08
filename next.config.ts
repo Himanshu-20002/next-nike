@@ -5,6 +5,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   images: {
-    domains: ['static.nike.com'],
-  },
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "static.nike.com",
+    },
+  ],
+},
+
 });

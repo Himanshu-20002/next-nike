@@ -2,15 +2,15 @@
 import React, { Suspense, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-
+import { useMediaQuery } from 'react-responsive';
 import {  useAnimations,  } from "@react-three/drei";
 
 const Model2 = React.forwardRef((props,ref) => {
   const { scene, animations } = useGLTF("/scifi.glb");
   // ✅ React Three Fiber-managed animation controller
   const { actions } = useAnimations(animations, scene);
-
-
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const scale = isMobile ? 20 : 40;
 
   useEffect(() => {
     if (actions && Object.keys(actions).length > 0) {
@@ -22,7 +22,7 @@ const Model2 = React.forwardRef((props,ref) => {
     <primitive
       ref={ref} // 
       object={scene}
-      scale={40} // Adjust scale to fit the view
+      scale={scale} // Adjust scale to fit the view
       position={[0, -1, 0]} // Center the model vertically
       rotation={[0, Math.PI, 0]} // Rotate the model if needed
     />

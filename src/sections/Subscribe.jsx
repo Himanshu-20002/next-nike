@@ -16,12 +16,12 @@ const Subscribe = () => {
 
         {/* Input Container */}
         <div className="w-full lg:max-w-[500px] xl:max-w-[600px] bg-gray-300 rounded-2xl">
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-2 p-2.5 sm:border sm:border-slate-gray rounded-2xl">
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-start sm:gap-2 p-2.5 sm:border sm:border-slate-gray rounded-2xl">
             {/* Input Field */}
             <input 
               type="text" 
               placeholder="subscribe@nike.com" 
-              className=" w-[430px] py-2.5 rounded-full sm:rounded-none focus:outline-none text-black max-sm:p-5" 
+              className=" w-[430px] py-2.5 rounded-full sm:rounded-none focus:outline-none text-black " 
             />
             
             {/* Button Container */}
@@ -30,6 +30,7 @@ const Subscribe = () => {
                 label="Sign Up" 
                 fullWidth={true}
                 className="whitespace-nowrap min-w-[220px]"
+                backgroundColor={"bg-gray-400 hover:bg-amber-500"}
               />
             </div>
           </div>

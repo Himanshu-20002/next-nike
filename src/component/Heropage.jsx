@@ -231,7 +231,7 @@ export default function Heropage() {
       </section>
 
       {/* Shoes Showcase */}
-      <section className="w-screen h-[200dvh] max-lg:h-[600dvh] py-20 px-6 md:px-12 lg:px-24">
+      <section className="w-screen h-[200dvh] max-lg:h-[270dvh] py-20 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto p-5">
           <h2
             className="text-5xl md:text-6xl font-black text-center mb-16"
@@ -303,8 +303,8 @@ export default function Heropage() {
       </section>
 
       {/* Footer */}
-      <footer className="w-screen h-[25dvh] bg-gray-900 py-12 px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto text-center">
+      <footer className="w-screen h-[25dvh] bg-gray-900 py-12 px-6 md:px-12 lg:px-24 flex ">
+        <div className="max-w-7xl mx-auto text-center  flex flex-col items-center justify-center">
           <div className="text-4xl font-black mb-6">NIKE</div>
           <p className="text-gray-400 mb-8">Just Do It</p>
 

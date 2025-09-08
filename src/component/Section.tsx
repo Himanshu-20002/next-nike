@@ -190,18 +190,18 @@ const Section = () => {
   //   "text-black absolute top-50% left-50% text-[9vw] italic will-change-transform   translate(-50%, -50%)";
   return (
     <div>
-      <section className="product-overview bg-white">
+      <section className="product-overview  min-h-[100dvh] w-screen bg-white">
 
         <div className="header-1">
           <h1 ref={header1Ref}>Only one Way</h1>
           <h1>
-            To <span className=" bg-clip-text text-red-400 text-[10vw]">Find Out</span>
+            To <span className=" bg-clip-text text-violet-400 text-[10vw]">Find Out</span>
           </h1>
           <h1 className="text-10xl">
-            <span className="  bg-clip-text text-[7vw]">
+            <span className="  bg-clip-text text-[9vw]">
               just
             </span>
-            <span className="bg-clip-text text-[7vw]">
+            <span className="bg-clip-text text-[12vw]">
               Do it
             </span>
 
